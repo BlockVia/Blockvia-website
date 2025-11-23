@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Blockvia HOST – Minecraft Server Launcher</title>
+    <meta
+      name="description"
+      content="Blockvia HOST is a modern Minecraft Java & Bedrock server launcher for Windows with one‑click install, console, world, player and file management."
+    />
+    <link rel="icon" type="image/png" href="media/favicon.png" />
+    <link rel="stylesheet" href="media/style.css" />
+    <link
+      href="https://fonts.bunny.net/css?family=Space+Grotesk:wght@500&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+  </head>
+  <body>
+    <!-- Navigation -->
+    <nav class="desktop_navbar">
+      <a href="#hero">
+        <img class="desktop_navbar_logo_img" src="media/logo_small.png" alt="Blockvia HOST logo" />
+      </a>
+      <a href="#features" class="desktop_navbar_link scroll">Features</a>
+      <a href="#how" class="desktop_navbar_link scroll">How it works</a>
+      <a href="#faq" class="desktop_navbar_link scroll">FAQ</a>
+      <a href="#contact" class="desktop_navbar_link scroll">Contact</a>
+      <div class="desktop_navbar_link2_div">
+        <a href="#download" class="desktop_navbar_link2 scroll">Download</a>
+      </div>
+    </nav>
+
+    <!-- Mobile navigation -->
+    <div class="mobile_navbar">
+      <a href="#hero" class="mobile_navbar_logo_img_a"
+        ><img class="mobile_navbar_logo_img" src="media/logo_small.png" alt="Blockvia HOST logo"
+      /></a>
+      <div id="mobile_navbar_links">
+        <a class="mobile_navbar_link scroll" onclick="mobile_navbar_link_hider()" href="#features"
+          >Features</a
+        >
+        <a class="mobile_navbar_link scroll" onclick="mobile_navbar_link_hider()" href="#how"
+          >How it works</a
+        >
+        <a class="mobile_navbar_link scroll" onclick="mobile_navbar_link_hider()" href="#faq">FAQ</a>
+        <a class="mobile_navbar_link scroll" onclick="mobile_navbar_link_hider()" href="#contact">Contact</a>
+        <a class="mobile_navbar_link scroll" onclick="mobile_navbar_link_hider()" href="#download"
+          >Download</a
+        >
+      </div>
+      <div class="icon" onclick="mobile_navbar_link_hider()">
+        <i class="fa fa-bars"></i>
+      </div>
+      <script>
+        function mobile_navbar_link_hider() {
+          var x = document.getElementById('mobile_navbar_links');
+          if (x.style.display === 'flex') {
+            x.style.display = 'none';
+          } else {
+            x.style.display = 'flex';
+          }
+        }
+      </script>
+    </div>
+
+    <div class="mainflex">
+      <!-- Hero / Download section -->
+      <div class="main1" id="hero">
+        <a class="main1_logo_a" href="#hero">
+          <img class="main1_logo" src="media/logo.png" alt="Blockvia HOST" />
+        </a>
+        <div class="main1_description">
+          <a>Blockvia HOST</a><br />
+          <a class="main1_actcent">Minecraft server launcher</a>
+        </div>
+        <div class="hero_subtitle">
+          <span>
+            Manage Java &amp; Bedrock servers from one beautiful desktop app.<br />
+            One‑click install, console, worlds, players, files &amp; remote access.
+          </span>
+        </div>
+        <div class="hero_actions" id="download">
+          <a
+            class="btn_primary"
+            href="https://github.com/BlockVia/BlockVia-Host/releases/download/v1.0.0/setup-blockvia-1.0.0.exe"
+            id="download-windows"
+            title="Download Blockvia HOST for Windows"
+            download="setup-blockvia-1.0.0.exe"
+          >
+            <i class="fa fa-windows"></i>
+            <span>Download for Windows</span>
+          </a>
+          <a
+            class="btn_secondary"
+            href="https://github.com/BlockVia/BlockVia-Host/releases/tag/v1.0.0"
+            id="download-github"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <i class="fa fa-github"></i>
+            <span>View source / releases</span>
+          </a>
+          <p class="hero_meta">
+            <span id="download-version">Version 1.0.0</span>
+            &bull;
+            <span>Windows 10/11 • 64‑bit</span>
+            <br />
+            <small>
+              SHA256:
+              0f5afdd66126f3e2ba1c38aba880de2891c1479338e08760c1b3775ef18aacb2
+            </small>
+          </p>
+        </div>
+        <a href="#features" class="scroll">
+          <img alt="Scroll down" class="main1_downarrow" src="media/downarrow.png" />
+        </a>
+      </div>
+
+      <!-- Features -->
+      <div id="features" class="main2">
+        <a class="headline">Why Blockvia HOST?</a>
+        <div class="main2_features_div">
+          <div class="main2_feature">
+            <img class="main2_feature_img" alt="Java &amp; Bedrock" src="media/placeholder 0.png" />
+            <a class="main2_feature_headline">Java &amp; Bedrock in one place</a>
+            <a class="main2_feature_text">
+              Create, start and stop both Java and Bedrock servers from a single launcher – no command line
+              required.
+            </a>
+          </div>
+          <div class="main2_feature">
+            <img class="main2_feature_img" alt="One‑click install" src="media/placeholder 1.png" />
+            <a class="main2_feature_headline">One‑click install</a>
+            <a class="main2_feature_text">
+              Select a version and Blockvia HOST automatically downloads the official server files and prepares the
+              folders.
+            </a>
+          </div>
+          <div class="main2_feature">
+            <img class="main2_feature_img" alt="Live console" src="media/placeholder 2.png" />
+            <a class="main2_feature_headline">Live console &amp; commands</a>
+            <a class="main2_feature_text">
+              See real‑time logs, send commands and manage your server without ever touching a terminal window.
+            </a>
+          </div>
+          <div class="main2_feature">
+            <img class="main2_feature_img" alt="World &amp; player management" src="media/placeholder 3.png" />
+            <a class="main2_feature_headline">World &amp; player management</a>
+            <a class="main2_feature_text">
+              Change MOTD, difficulty, PvP, whitelist, OPs, bans and more using clean toggles and forms.
+            </a>
+          </div>
+          <div class="main2_feature">
+            <img class="main2_feature_img" alt="Backups &amp; resets" src="media/placeholder 4.png" />
+            <a class="main2_feature_headline">Backups &amp; resets</a>
+            <a class="main2_feature_text">
+              Take world backups before experiments, reset corrupted worlds and upload custom saves safely.
+            </a>
+          </div>
+          <div class="main2_feature">
+            <img class="main2_feature_img" alt="Built‑in file browser" src="media/placeholder 5.png" />
+            <a class="main2_feature_headline">Built‑in file browser</a>
+            <a class="main2_feature_text">
+              Browse and open important server files directly from the launcher – no manual folder hunting.
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- How it works -->
+      <div id="how" class="main3">
+        <a class="headline">How it works</a>
+        <div class="main3_join_div_div">
+          <div class="main3_join_div">
+            <a class="main3_join_title">1. Install Blockvia HOST</a>
+            <p class="main3_join_text">
+              Download the latest setup for Windows, then run the installer and finish the wizard.
+            </p>
+          </div>
+          <div class="main3_join_div">
+            <a class="main3_join_title">2. Create your server</a>
+            <p class="main3_join_text">
+              Open the app, choose Java or Bedrock and the version you want, then click "Install server".
+            </p>
+          </div>
+          <div class="main3_join_div">
+            <a class="main3_join_title">3. Start &amp; manage</a>
+            <p class="main3_join_text">
+              Start the server from the manager page and control console, world, players and files from one window.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- FAQ / small about -->
+      <div id="faq" class="main5">
+        <a class="headline">FAQ &amp; info</a>
+        <div class="faq_container">
+          <div class="faq_item">
+            <h3>Is Blockvia HOST free?</h3>
+            <p>
+              Yes. The launcher itself is free to use. You only need your own hardware or hosting machine to run the
+              servers.
+            </p>
+          </div>
+          <div class="faq_item">
+            <h3>Do I need to install Java?</h3>
+            <p>
+              No. Blockvia HOST can download and manage a local Java runtime for you, so you can focus on the server
+              itself.
+            </p>
+          </div>
+          <div class="faq_item">
+            <h3>Which Minecraft versions are supported?</h3>
+            <p>
+              The launcher reads the official Mojang version manifest for Java and a maintained list for Bedrock, so
+              you always see up‑to‑date versions.
+            </p>
+          </div>
+          <div class="faq_item">
+            <h3>What platforms are supported?</h3>
+            <p>
+              The current build targets Windows 10/11 64‑bit. Other platforms may be added later.
+            </p>
+          </div>
+        </div>
+        <div class="about_card">
+          <h3>About Blockvia HOST</h3>
+          <p>
+            Blockvia HOST was designed to feel like a modern Minecraft launcher while still giving you full control
+            over your own servers. It uses a clean Electron interface with a console, world editor, player manager and
+            file browser in one window.
+          </p>
+        </div>
+      </div>
+
+      <!-- Contact / Discord section -->
+      <div id="contact" class="main5 contact_block">
+        <a class="headline">Contact &amp; Discord</a>
+        <div class="contact_container">
+          <div class="contact_card">
+            <h3>
+              <i class="fa fa-discord contact_icon" aria-hidden="true"></i>
+              Join the Discord server
+            </h3>
+            <p>
+              Need help with Blockvia HOST, ideas for new features or want to share your server setup? Join our Discord
+              community to:
+            </p>
+            <ul>
+              <li>Get support and troubleshooting for the launcher.</li>
+              <li>Discuss best practices for Java &amp; Bedrock servers.</li>
+              <li>Suggest new features and improvements.</li>
+              <li>Share screenshots and configs with other server owners.</li>
+            </ul>
+            <a
+              href="https://discord.gg/UsmMByY6tT"
+              class="btn_primary contact_discord_btn"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <i class="fa fa-discord" aria-hidden="true"></i>
+              <span>Join Blockvia HOST Discord</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Small legal notice -->
+    <div class="legal_notice" id="legal-notice">
+      <div class="legal_notice_inner">
+        <button class="legal_notice_toggle" type="button" id="legal-notice-toggle">
+          Legal notice &amp; terms (click to read)
+        </button>
+        <div class="legal_notice_content" id="legal-notice-content">
+          <p>
+            Blockvia HOST is a tool for managing your own Minecraft servers on your own hardware or hosting. You are
+            fully responsible for how you use the software and for any configuration of your servers.
+          </p>
+          <p>
+            If you choose to share or publish your server IP address (for example on Discord or any other platform), you
+            do so at your own risk. Blockvia HOST and its developers are not responsible for any consequences of sharing
+            your IP, including attacks on the server, unauthorized access, data loss, or downtime.
+          </p>
+          <p>
+            You are responsible for complying with Mojang/Microsoft terms, local laws, and the rules of any hosting or
+            network provider you use. Blockvia HOST does not encourage or support piracy, cheating, or abusive behavior
+            on servers.
+          </p>
+          <p>
+            This launcher is provided "as is" without any guarantees. We do not guarantee uptime or that the software
+            will be bug‑free. Always keep backups of your important worlds and configuration files.
+          </p>
+        </div>
+      </div>
+    </div>
+    <footer class="copyright_div">
+      <span class="copyright">
+        © 2025 Blockvia HOST. All rights reserved.
+      </span>
+    </footer>
+
+    <!-- Lightbox for feature images -->
+    <div class="img_lightbox_backdrop" id="feature-lightbox">
+      <div class="img_lightbox_inner">
+        <img id="feature-lightbox-img" src="" alt="Feature preview" />
+      </div>
+    </div>
+
+    <script>
+      // Smooth scrolling for anchor links with .scroll class
+      const scrollLinks = document.querySelectorAll('.scroll');
+      scrollLinks.forEach(function (link) {
+        link.addEventListener('click', function (event) {
+          const href = link.getAttribute('href');
+          if (!href || !href.startsWith('#')) return;
+          event.preventDefault();
+          const target = document.querySelector(href);
+          if (!target) return;
+          const offsetTop = target.offsetTop - 70; // compensate navbar height
+          window.scrollTo({ top: offsetTop, behavior: 'smooth' });
+        });
+      });
+
+      // Simple lightbox for feature images
+      const lightbox = document.getElementById('feature-lightbox');
+      const lightboxImg = document.getElementById('feature-lightbox-img');
+      document.querySelectorAll('.main2_feature_img').forEach((img) => {
+        img.addEventListener('click', () => {
+          lightboxImg.src = img.src;
+          lightbox.classList.add('active');
+        });
+      });
+
+      lightbox.addEventListener('click', () => {
+        lightbox.classList.remove('active');
+        lightboxImg.src = '';
+      });
+
+      // Toggle small legal notice
+      const legalNotice = document.getElementById('legal-notice');
+      const legalToggle = document.getElementById('legal-notice-toggle');
+      if (legalNotice && legalToggle) {
+        legalToggle.addEventListener('click', () => {
+          legalNotice.classList.toggle('open');
+        });
+      }
+    </script>
+  </body>
+</html>

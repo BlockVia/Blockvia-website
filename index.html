@@ -345,9 +345,12 @@
       <div class="cookie_banner_inner">
         <p class="cookie_banner_text">
           This site uses cookies from Google AdSense and other partners to deliver and measure ads. By using this site,
-          you agree to our use of cookies. You can learn more in the Privacy &amp; Terms section.
+          you agree to our use of cookies.
         </p>
         <div class="cookie_banner_actions">
+          <button type="button" class="cookie_banner_link_button" id="cookie-consent-more">
+            Privacy &amp; Terms
+          </button>
           <button type="button" class="cookie_banner_button" id="cookie-consent-accept">OK</button>
         </div>
       </div>
@@ -404,6 +407,7 @@
         const storageKey = 'bv_cookie_consent_v1';
         const banner = document.getElementById('cookie-consent-banner');
         const acceptBtn = document.getElementById('cookie-consent-accept');
+        const moreBtn = document.getElementById('cookie-consent-more');
         if (!banner || !acceptBtn) return;
 
         try {
@@ -426,6 +430,25 @@
             // ignore
           }
         });
+
+        if (moreBtn) {
+          moreBtn.addEventListener('click', function () {
+            banner.style.display = 'none';
+            try {
+              const legal = document.getElementById('legal-notice');
+              const legalContent = document.getElementById('legal-notice-content');
+              if (legal) {
+                legal.classList.add('open');
+                legal.scrollIntoView({ behavior: 'smooth' });
+              }
+              if (legalContent) {
+                legalContent.scrollIntoView({ behavior: 'smooth' });
+              }
+            } catch (e) {
+              // ignore scroll issues
+            }
+          });
+        }
       })();
     </script>
   </body>

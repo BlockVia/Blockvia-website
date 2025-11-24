@@ -2,10 +2,10 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <title>Blockvia – Ad Slot</title>
+    <title>Blockvia – Ad Slider</title>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <!-- كود AdSense الرسمي (Display / Square Responsive) -->
+    <!-- تحميل مكتبة AdSense مرة واحدة -->
     <script
       async
       src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9701903679648902"
@@ -44,17 +44,37 @@
         text-overflow: ellipsis;
       }
 
-      .ad-wrapper {
-        /* تجعل الإعلان يأخذ شكل مربع تقريباً داخل مساحة الإطار */
+      /* حاوية الـ Slider */
+      .slider-container {
+        position: relative;
         flex: 1;
         display: flex;
         align-items: center;
         justify-content: center;
       }
 
+      /* كل شريحة إعلان */
+      .ad-slide {
+        position: absolute;
+        inset: 0;
+        margin: 0 auto;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 0.6s ease-in-out;
+      }
+
+      .ad-slide.active {
+        opacity: 1;
+        pointer-events: auto;
+      }
+
+      /* مربع الإعلان نفسه */
       .ad-inner {
         width: 100%;
-        max-width: 260px; /* مناسبة تماماً لإطارك الصغير */
+        max-width: 260px; /* يناسب مساحة الـ iframe الصغير */
       }
 
       .note {
@@ -62,30 +82,126 @@
         color: #9ca3af;
         text-align: right;
       }
+
+      /* نقاط صغيرة اختيارية لبيان الإعلان الحالي */
+      .dots {
+        display: flex;
+        gap: 4px;
+        justify-content: center;
+        margin-top: 2px;
+      }
+
+      .dot {
+        width: 5px;
+        height: 5px;
+        border-radius: 999px;
+        background-color: #4b5563;
+      }
+
+      .dot.active {
+        background-color: #facc15;
+      }
     </style>
   </head>
   <body>
     <div class="root">
       <div class="title">Sponsored • Blockvia HOST</div>
 
-      <div class="ad-wrapper">
-        <div class="ad-inner">
-          <!-- Square Responsive -->
-          <ins
-            class="adsbygoogle"
-            style="display:block"
-            data-ad-client="ca-pub-9701903679648902"
-            data-ad-slot="9514661424"
-            data-ad-format="auto"
-            data-full-width-responsive="true"
-          ></ins>
+      <div class="slider-container" id="ad-slider">
+        <!-- الشريحة 1 -->
+        <div class="ad-slide active" data-index="0">
+          <div class="ad-inner">
+            <!-- Square Responsive 1 -->
+            <ins
+              class="adsbygoogle"
+              style="display:block"
+              data-ad-client="ca-pub-9701903679648902"
+              data-ad-slot="9514661424"
+              data-ad-format="auto"
+              data-full-width-responsive="true"
+            ></ins>
+          </div>
+        </div>
+
+        <!-- الشريحة 2 -->
+        <div class="ad-slide" data-index="1">
+          <div class="ad-inner">
+            <!-- Square Responsive 2 (يفضل slot مختلف) -->
+            <ins
+              class="adsbygoogle"
+              style="display:block"
+              data-ad-client="ca-pub-9701903679648902"
+              data-ad-slot="9514661424"
+              data-ad-format="auto"
+              data-full-width-responsive="true"
+            ></ins>
+          </div>
+        </div>
+
+        <!-- الشريحة 3 -->
+        <div class="ad-slide" data-index="2">
+          <div class="ad-inner">
+            <!-- Square Responsive 3 (يفضل slot مختلف) -->
+            <ins
+              class="adsbygoogle"
+              style="display:block"
+              data-ad-client="ca-pub-9701903679648902"
+              data-ad-slot="9514661424"
+              data-ad-format="auto"
+              data-full-width-responsive="true"
+            ></ins>
+          </div>
         </div>
       </div>
 
-      <div class="note">Ad space inside Blockvia HOST launcher</div>
+      <div class="dots" id="slider-dots">
+        <div class="dot active" data-index="0"></div>
+        <div class="dot" data-index="1"></div>
+        <div class="dot" data-index="2"></div>
+      </div>
+
+      <div class="note">Ads rotate every ~30s without reloading the page.</div>
 
       <script>
+        // تهيئة كل وحدات AdSense مرة واحدة فقط
         (adsbygoogle = window.adsbygoogle || []).push({});
+        (adsbygoogle = window.adsbygoogle || []).push({});
+        (adsbygoogle = window.adsbygoogle || []).push({});
+
+        // إعداد الـ Slider: عدد الإعلانات N ومدة T لكل إعلان
+        const SLIDE_DURATION_MS = 30000; // 30 ثانية (يمكنك تغييرها بين 20000 و 60000)
+
+        const slides = Array.from(document.querySelectorAll(".ad-slide"));
+        const dots = Array.from(document.querySelectorAll(".dot"));
+        let current = 0;
+
+        function setActive(index) {
+          slides.forEach((slide, i) => {
+            slide.classList.toggle("active", i === index);
+          });
+          dots.forEach((dot, i) => {
+            dot.classList.toggle("active", i === index);
+          });
+          current = index;
+        }
+
+        function nextSlide() {
+          const next = (current + 1) % slides.length;
+          setActive(next);
+        }
+
+        // تبديل تلقائي كل T ثانية
+        setInterval(nextSlide, SLIDE_DURATION_MS);
+
+        // تحكم اختياري بالنقر على النقاط (تجربة مستخدم أفضل)
+        dots.forEach((dot) => {
+          dot.addEventListener("click", () => {
+            const idx = parseInt(dot.dataset.index, 10);
+            if (!Number.isNaN(idx)) {
+              setActive(idx);
+            }
+          });
+        });
       </script>
     </div>
   </body>

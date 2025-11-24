@@ -348,10 +348,35 @@
           you agree to our use of cookies.
         </p>
         <div class="cookie_banner_actions">
-          <button type="button" class="cookie_banner_link_button" id="cookie-consent-more">
+          <button
+            type="button"
+            class="cookie_banner_button cookie_banner_secondary"
+            id="cookie-consent-more"
+          >
             Privacy &amp; Terms
           </button>
           <button type="button" class="cookie_banner_button" id="cookie-consent-accept">OK</button>
+        </div>
+        <div class="cookie_banner_details" id="cookie-consent-details">
+          <h4>Privacy &amp; Terms (summary)</h4>
+          <ul>
+            <li>
+              Ads are provided by Google AdSense and partners using cookies or similar technologies to deliver and measure
+              ads.
+            </li>
+            <li>
+              We do not sell or rent your personally identifiable information and we do not combine it with ad data
+              without your consent.
+            </li>
+            <li>
+              You can manage ad personalisation in Google Ads Settings and learn more in the full legal notice at the
+              bottom of this page.
+            </li>
+          </ul>
+          <p>
+            For the complete legal notice, privacy &amp; terms text, scroll down to the
+            <strong>Legal notice, privacy &amp; terms</strong> section in the footer.
+          </p>
         </div>
       </div>
     </div>
@@ -408,6 +433,7 @@
         const banner = document.getElementById('cookie-consent-banner');
         const acceptBtn = document.getElementById('cookie-consent-accept');
         const moreBtn = document.getElementById('cookie-consent-more');
+        const details = document.getElementById('cookie-consent-details');
         if (!banner || !acceptBtn) return;
 
         try {
@@ -431,21 +457,13 @@
           }
         });
 
-        if (moreBtn) {
+        if (moreBtn && details) {
           moreBtn.addEventListener('click', function () {
-            banner.style.display = 'none';
-            try {
-              const legal = document.getElementById('legal-notice');
-              const legalContent = document.getElementById('legal-notice-content');
-              if (legal) {
-                legal.classList.add('open');
-                legal.scrollIntoView({ behavior: 'smooth' });
-              }
-              if (legalContent) {
-                legalContent.scrollIntoView({ behavior: 'smooth' });
-              }
-            } catch (e) {
-              // ignore scroll issues
+            const isOpen = details.classList.toggle('open');
+            if (isOpen) {
+              moreBtn.textContent = 'Hide details';
+            } else {
+              moreBtn.textContent = 'Privacy & Terms';
             }
           });
         }

@@ -726,30 +726,18 @@ body {
     background: var(--accent2);
 }
 
-/* Secondary button for Privacy & Terms inside cookie modal (same شكل as OK) */
-.cookie_banner_secondary {
-    background: transparent;
-    border: 1px solid var(--accent1);
-    color: #fff;
-}
-
-.cookie_banner_secondary:hover {
-    background: var(--accent2_transp);
-}
-
+/* Expandable Privacy & Terms text inside cookie modal */
 .cookie_banner_details {
     margin-top: 0.75rem;
     padding-top: 0.5rem;
     border-top: 1px solid rgba(255, 255, 255, 0.12);
     font-size: 0.8rem;
     color: #ffffffcc;
-    max-height: 0;
-    overflow: hidden;
-    transition: max-height 0.25s ease;
+    display: none;
 }
 
 .cookie_banner_details.open {
-    max-height: 12rem;
+    display: block;
 }
 
 .cookie_banner_details h4 {

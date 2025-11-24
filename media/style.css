@@ -726,21 +726,48 @@ body {
     background: var(--accent2);
 }
 
-/* Text-style link for Privacy & Terms inside cookie modal */
-.cookie_banner_link_button {
-    background: none;
-    border: 0;
-    padding: 0;
-    margin-right: auto; /* يدفع زر OK لليمين */
-    color: var(--accent1);
-    font-size: 0.85rem;
-    cursor: pointer;
-    font-family: 'Space Grotesk', sans-serif;
-    text-decoration: underline;
+/* Secondary button for Privacy & Terms inside cookie modal (same شكل as OK) */
+.cookie_banner_secondary {
+    background: transparent;
+    border: 1px solid var(--accent1);
+    color: #fff;
 }
 
-.cookie_banner_link_button:hover {
-    color: var(--accent2);
+.cookie_banner_secondary:hover {
+    background: var(--accent2_transp);
+}
+
+.cookie_banner_details {
+    margin-top: 0.75rem;
+    padding-top: 0.5rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.12);
+    font-size: 0.8rem;
+    color: #ffffffcc;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.25s ease;
+}
+
+.cookie_banner_details.open {
+    max-height: 12rem;
+}
+
+.cookie_banner_details h4 {
+    margin: 0 0 0.35rem 0;
+    font-size: 0.9rem;
+}
+
+.cookie_banner_details ul {
+    margin: 0 0 0.35rem 1.1rem;
+    padding: 0;
+}
+
+.cookie_banner_details li {
+    margin-bottom: 0.2rem;
+}
+
+.cookie_banner_details p {
+    margin: 0;
 }
 
 .legal_notice_inner {

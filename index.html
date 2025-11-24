@@ -356,7 +356,14 @@
           >
             Privacy &amp; Terms
           </button>
-          <button type="button" class="cookie_banner_button" id="cookie-consent-accept">OK</button>
+          <button
+            type="button"
+            class="cookie_banner_button"
+            id="cookie-consent-accept"
+            onclick="bvCookieAccept()"
+          >
+            OK
+          </button>
         </div>
         <div class="cookie_banner_details" id="cookie-consent-details">
           <h4>Privacy &amp; Terms (summary)</h4>
@@ -443,12 +450,26 @@
         }
       }
 
+      // Accept cookies (called from OK button)
+      function bvCookieAccept() {
+        var banner = document.getElementById('cookie-consent-banner');
+        if (banner) {
+          banner.style.display = 'none';
+        }
+        try {
+          if (window.localStorage) {
+            localStorage.setItem('bv_cookie_consent_v1', 'accepted');
+          }
+        } catch (e) {
+          // ignore
+        }
+      }
+
       // Basic cookie consent banner (for AdSense privacy/compliance)
       (function () {
         const storageKey = 'bv_cookie_consent_v1';
         const banner = document.getElementById('cookie-consent-banner');
-        const acceptBtn = document.getElementById('cookie-consent-accept');
-        if (!banner || !acceptBtn) return;
+        if (!banner) return;
 
         try {
           if (window.localStorage && localStorage.getItem(storageKey) === 'accepted') {
@@ -459,17 +480,6 @@
         }
 
         banner.style.display = 'flex';
-
-        acceptBtn.addEventListener('click', function () {
-          banner.style.display = 'none';
-          try {
-            if (window.localStorage) {
-              localStorage.setItem(storageKey, 'accepted');
-            }
-          } catch (e) {
-            // ignore
-          }
-        });
       })();
     </script>
   </body>

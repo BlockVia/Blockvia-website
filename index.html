@@ -459,11 +459,13 @@
 
         if (moreBtn && details) {
           moreBtn.addEventListener('click', function () {
-            const isOpen = details.classList.toggle('open');
-            if (isOpen) {
-              moreBtn.textContent = 'Hide details';
-            } else {
+            const currentlyVisible = details.style.display === 'block';
+            if (currentlyVisible) {
+              details.style.display = 'none';
               moreBtn.textContent = 'Privacy & Terms';
+            } else {
+              details.style.display = 'block';
+              moreBtn.textContent = 'Hide details';
             }
           });
         }

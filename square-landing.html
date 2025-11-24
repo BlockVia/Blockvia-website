@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Blockvia – Ad Slot</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <!-- كود AdSense الرسمي (Display / Square Responsive) -->
+    <script
+      async
+      src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9701903679648902"
+      crossorigin="anonymous"
+    ></script>
+
+    <style>
+      html,
+      body {
+        margin: 0;
+        padding: 0;
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+        background: #050810;
+        font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+          sans-serif;
+        color: #e5e7eb;
+      }
+
+      .root {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        box-sizing: border-box;
+        padding: 4px 6px;
+        gap: 4px;
+      }
+
+      .title {
+        font-size: 11px;
+        font-weight: 600;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+
+      .ad-wrapper {
+        /* تجعل الإعلان يأخذ شكل مربع تقريباً داخل مساحة الإطار */
+        flex: 1;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .ad-inner {
+        width: 100%;
+        max-width: 260px; /* مناسبة تماماً لإطارك الصغير */
+      }
+
+      .note {
+        font-size: 9px;
+        color: #9ca3af;
+        text-align: right;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="root">
+      <div class="title">Sponsored • Blockvia HOST</div>
+
+      <div class="ad-wrapper">
+        <div class="ad-inner">
+          <!-- Square Responsive -->
+          <ins
+            class="adsbygoogle"
+            style="display:block"
+            data-ad-client="ca-pub-9701903679648902"
+            data-ad-slot="9514661424"
+            data-ad-format="auto"
+            data-full-width-responsive="true"
+          ></ins>
+        </div>
+      </div>
+
+      <div class="note">Ad space inside Blockvia HOST launcher</div>
+
+      <script>
+        (adsbygoogle = window.adsbygoogle || []).push({});
+      </script>
+    </div>
+  </body>
+</html>

@@ -704,6 +704,7 @@ body {
 
 .cookie_banner_actions {
     display: flex;
+    align-items: center;
     justify-content: flex-end;
     gap: 0.5rem;
     flex-wrap: wrap;
@@ -725,19 +726,21 @@ body {
     background: var(--accent2);
 }
 
+/* Text-style link for Privacy & Terms inside cookie modal */
 .cookie_banner_link_button {
-    background: transparent;
+    background: none;
     border: 0;
-    color: #ffffffcc;
-    text-decoration: underline;
+    padding: 0;
+    margin-right: auto; /* يدفع زر OK لليمين */
+    color: var(--accent1);
     font-size: 0.85rem;
     cursor: pointer;
     font-family: 'Space Grotesk', sans-serif;
-    padding: 0.25rem 0.5rem;
+    text-decoration: underline;
 }
 
 .cookie_banner_link_button:hover {
-    color: #ffffff;
+    color: var(--accent2);
 }
 
 .legal_notice_inner {

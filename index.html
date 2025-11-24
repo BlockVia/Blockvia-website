@@ -352,6 +352,7 @@
             type="button"
             class="cookie_banner_button"
             id="cookie-consent-more"
+            onclick="bvToggleCookieDetails()"
           >
             Privacy &amp; Terms
           </button>
@@ -427,13 +428,26 @@
         });
       }
 
+      // Toggle details in cookie banner (called from inline onclick)
+      function bvToggleCookieDetails() {
+        var details = document.getElementById('cookie-consent-details');
+        var moreBtn = document.getElementById('cookie-consent-more');
+        if (!details || !moreBtn) return;
+        var visible = details.style.display === 'block';
+        if (visible) {
+          details.style.display = 'none';
+          moreBtn.textContent = 'Privacy & Terms';
+        } else {
+          details.style.display = 'block';
+          moreBtn.textContent = 'Hide details';
+        }
+      }
+
       // Basic cookie consent banner (for AdSense privacy/compliance)
       (function () {
         const storageKey = 'bv_cookie_consent_v1';
         const banner = document.getElementById('cookie-consent-banner');
         const acceptBtn = document.getElementById('cookie-consent-accept');
-        const moreBtn = document.getElementById('cookie-consent-more');
-        const details = document.getElementById('cookie-consent-details');
         if (!banner || !acceptBtn) return;
 
         try {
@@ -456,19 +470,6 @@
             // ignore
           }
         });
-
-        if (moreBtn && details) {
-          moreBtn.addEventListener('click', function () {
-            const currentlyVisible = details.style.display === 'block';
-            if (currentlyVisible) {
-              details.style.display = 'none';
-              moreBtn.textContent = 'Privacy & Terms';
-            } else {
-              details.style.display = 'block';
-              moreBtn.textContent = 'Hide details';
-            }
-          });
-        }
       })();
     </script>
   </body>

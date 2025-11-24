@@ -335,8 +335,23 @@
     <footer class="copyright_div">
       <span class="copyright">
         © 2025 Blockvia HOST. All rights reserved.
+        ·
+        <a href="#legal-notice" class="footer_privacy_link">Privacy &amp; Terms</a>
       </span>
     </footer>
+
+    <!-- Simple cookie consent banner (for AdSense / privacy compliance) -->
+    <div class="cookie_banner" id="cookie-consent-banner">
+      <div class="cookie_banner_inner">
+        <p class="cookie_banner_text">
+          This site uses cookies from Google AdSense and other partners to deliver and measure ads. By using this site,
+          you agree to our use of cookies. You can learn more in the Privacy &amp; Terms section.
+        </p>
+        <div class="cookie_banner_actions">
+          <button type="button" class="cookie_banner_button" id="cookie-consent-accept">OK</button>
+        </div>
+      </div>
+    </div>
 
     <!-- Lightbox for feature images -->
     <div class="img_lightbox_backdrop" id="feature-lightbox">
@@ -383,6 +398,35 @@
           legalNotice.classList.toggle('open');
         });
       }
+
+      // Basic cookie consent banner (for AdSense privacy/compliance)
+      (function () {
+        const storageKey = 'bv_cookie_consent_v1';
+        const banner = document.getElementById('cookie-consent-banner');
+        const acceptBtn = document.getElementById('cookie-consent-accept');
+        if (!banner || !acceptBtn) return;
+
+        try {
+          if (window.localStorage && localStorage.getItem(storageKey) === 'accepted') {
+            return;
+          }
+        } catch (e) {
+          // localStorage may be blocked; fall through to showing banner
+        }
+
+        banner.style.display = 'block';
+
+        acceptBtn.addEventListener('click', function () {
+          banner.style.display = 'none';
+          try {
+            if (window.localStorage) {
+              localStorage.setItem(storageKey, 'accepted');
+            }
+          } catch (e) {
+            // ignore
+          }
+        });
+      })();
     </script>
   </body>
 </html>

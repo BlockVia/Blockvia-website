@@ -705,6 +705,8 @@ body {
 .cookie_banner_actions {
     display: flex;
     justify-content: flex-end;
+    gap: 0.5rem;
+    flex-wrap: wrap;
 }
 
 .cookie_banner_button {
@@ -721,6 +723,21 @@ body {
 
 .cookie_banner_button:hover {
     background: var(--accent2);
+}
+
+.cookie_banner_link_button {
+    background: transparent;
+    border: 0;
+    color: #ffffffcc;
+    text-decoration: underline;
+    font-size: 0.85rem;
+    cursor: pointer;
+    font-family: 'Space Grotesk', sans-serif;
+    padding: 0.25rem 0.5rem;
+}
+
+.cookie_banner_link_button:hover {
+    color: #ffffff;
 }
 
 .legal_notice_inner {

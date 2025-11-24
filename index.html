@@ -459,12 +459,38 @@
         }
       }
 
+      // Helpers for simple consent cookie
+      function bvSetCookie(name, value, days) {
+        var expires = '';
+        if (days) {
+          var date = new Date();
+          date.setTime(date.getTime() + days * 24 * 60 * 60 * 1000);
+          expires = '; expires=' + date.toUTCString();
+        }
+        document.cookie = name + '=' + encodeURIComponent(value) + expires + '; path=/';
+      }
+
+      function bvGetCookie(name) {
+        var nameEQ = name + '=';
+        var ca = document.cookie.split(';');
+        for (var i = 0; i < ca.length; i++) {
+          var c = ca[i];
+          while (c.charAt(0) === ' ') c = c.substring(1, c.length);
+          if (c.indexOf(nameEQ) === 0) return decodeURIComponent(c.substring(nameEQ.length, c.length));
+        }
+        return null;
+      }
+
       // Accept cookies (called from OK button)
       function bvCookieAccept() {
         var banner = document.getElementById('cookie-consent-banner');
         if (banner) {
           banner.style.display = 'none';
         }
+        // احفظ القبول في كوكي المتصفح + localStorage كنسخة احتياطية
+        try {
+          bvSetCookie('bv_cookie_consent', '1', 365);
+        } catch (e) {}
         try {
           if (window.localStorage) {
             localStorage.setItem('bv_cookie_consent_v1', 'accepted');
@@ -481,11 +507,18 @@
         if (!banner) return;
 
         try {
+          // إذا كان هناك كوكي قبول، لا نظهر النافذة
+          if (bvGetCookie('bv_cookie_consent') === '1') {
+            return;
+          }
+
+          // دعم خلفي للإصدارات القديمة التي استخدمت localStorage فقط
           if (window.localStorage && localStorage.getItem(storageKey) === 'accepted') {
+            bvSetCookie('bv_cookie_consent', '1', 365);
             return;
           }
         } catch (e) {
-          // localStorage may be blocked; fall through to showing banner
+          // في حالة تعطل الكوكي أو localStorage، نسمح بعرض النافذة
         }
 
         banner.style.display = 'flex';

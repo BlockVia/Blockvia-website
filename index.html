@@ -336,7 +336,7 @@
       <span class="copyright">
         © 2025 Blockvia HOST. All rights reserved.
         ·
-        <a href="#legal-notice" class="footer_privacy_link">Privacy &amp; Terms</a>
+        <a href="#legal-notice" class="footer_privacy_link" onclick="bvOpenLegalNotice(event)">Privacy &amp; Terms</a>
       </span>
     </footer>
 
@@ -433,6 +433,15 @@
         legalToggle.addEventListener('click', () => {
           legalNotice.classList.toggle('open');
         });
+      }
+
+      // Open legal notice from footer link
+      function bvOpenLegalNotice(event) {
+        if (event && event.preventDefault) event.preventDefault();
+        const legal = document.getElementById('legal-notice');
+        if (!legal) return;
+        legal.classList.add('open');
+        legal.scrollIntoView({ behavior: 'smooth' });
       }
 
       // Toggle details in cookie banner (called from inline onclick)

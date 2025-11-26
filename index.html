@@ -126,10 +126,24 @@
 
       <!-- Features -->
       <div id="features" class="main2">
-        <!-- إعلان أعلى عنوان المميزات -->
-        <div class="page_bottom_ad" style="max-width: 100%; margin: 0 auto 30px; text-align: center;">
-          <script async="async" data-cfasync="false" src="//pl28139319.effectivegatecpm.com/22a87df3c434936f876b2f34f6614b4d/invoke.js"></script>
-          <div id="container-22a87df3c434936f876b2f34f6614b4d"></div>
+        <!-- سلايدر إعلانات: يعرض 4 إعلانات ويتنقل بينهم كل دقيقتين -->
+        <div class="ad_slider" id="ad-slider">
+          <div class="ad_slide ad_slide_active">
+            <script async="async" data-cfasync="false" src="//pl28139319.effectivegatecpm.com/22a87df3c434936f876b2f34f6614b4d/invoke.js"></script>
+            <div id="container-22a87df3c434936f876b2f34f6614b4d"></div>
+          </div>
+          <div class="ad_slide">
+            <script async="async" data-cfasync="false" src="//pl28139319.effectivegatecpm.com/22a87df3c434936f876b2f34f6614b4d/invoke.js"></script>
+            <div id="container-22a87df3c434936f876b2f34f6614b4d-2"></div>
+          </div>
+          <div class="ad_slide">
+            <script async="async" data-cfasync="false" src="//pl28139319.effectivegatecpm.com/22a87df3c434936f876b2f34f6614b4d/invoke.js"></script>
+            <div id="container-22a87df3c434936f876b2f34f6614b4d-3"></div>
+          </div>
+          <div class="ad_slide">
+            <script async="async" data-cfasync="false" src="//pl28139319.effectivegatecpm.com/22a87df3c434936f876b2f34f6614b4d/invoke.js"></script>
+            <div id="container-22a87df3c434936f876b2f34f6614b4d-4"></div>
+          </div>
         </div>
 
         <a class="headline">Why Blockvia HOST?</a>
@@ -428,6 +442,34 @@
           lightbox.classList.add('active');
         });
       });
+
+      // Ad slider: تبديل بين 4 إعلانات كل دقيقتين (120000ms)
+      (function () {
+        const slider = document.getElementById('ad-slider');
+        if (!slider) return;
+        const slides = slider.querySelectorAll('.ad_slide');
+        if (!slides.length) return;
+
+        let currentIndex = 0;
+
+        function showSlide(index) {
+          slides.forEach((slide, i) => {
+            if (i === index) {
+              slide.classList.add('ad_slide_active');
+            } else {
+              slide.classList.remove('ad_slide_active');
+            }
+          });
+        }
+
+        // ابدأ بأول إعلان
+        showSlide(0);
+
+        setInterval(function () {
+          currentIndex = (currentIndex + 1) % slides.length;
+          showSlide(currentIndex);
+        }, 120000); // 120000ms = دقيقتان
+      })();
 
       lightbox.addEventListener('click', () => {
         lightbox.classList.remove('active');

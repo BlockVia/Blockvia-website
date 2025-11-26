@@ -150,6 +150,9 @@
             <script async="async" data-cfasync="false" src="//pl28139319.effectivegatecpm.com/22a87df3c434936f876b2f34f6614b4d/invoke.js"></script>
             <div id="container-22a87df3c434936f876b2f34f6614b4d-8"></div>
           </div>
+          <p id="ad-slider-indicator" style="margin-top: 0.75rem; font-size: 0.9rem; opacity: 0.8;">
+            Ads group 1 / 2
+          </p>
         </div>
 
         <a class="headline">Why Blockvia HOST?</a>
@@ -457,6 +460,7 @@
         if (!slides.length) return;
 
         let currentIndex = 0;
+        const indicator = document.getElementById('ad-slider-indicator');
 
         function showSlide(index) {
           slides.forEach((slide, i) => {
@@ -466,9 +470,13 @@
               slide.classList.remove('ad_slide_active');
             }
           });
+
+          if (indicator) {
+            indicator.textContent = 'Ads group ' + (index + 1) + ' / ' + slides.length;
+          }
         }
 
-        // ابدأ بأول إعلان
+        // ابدأ بأول مجموعة
         showSlide(0);
 
         setInterval(function () {

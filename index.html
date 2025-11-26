@@ -126,33 +126,10 @@
 
       <!-- Features -->
       <div id="features" class="main2">
-        <!-- سلايدر إعلانات: يعرض 4 إعلانات في كل مرة ويتنقل كل 30 ثانية -->
-        <div class="ad_slider" id="ad-slider">
-          <!-- الشريحة 1: 4 إعلانات -->
-          <div class="ad_slide ad_slide_active">
-            <script async="async" data-cfasync="false" src="//pl28139319.effectivegatecpm.com/22a87df3c434936f876b2f34f6614b4d/invoke.js"></script>
-            <div id="container-22a87df3c434936f876b2f34f6614b4d-1"></div>
-            <script async="async" data-cfasync="false" src="//pl28139319.effectivegatecpm.com/22a87df3c434936f876b2f34f6614b4d/invoke.js"></script>
-            <div id="container-22a87df3c434936f876b2f34f6614b4d-2"></div>
-            <script async="async" data-cfasync="false" src="//pl28139319.effectivegatecpm.com/22a87df3c434936f876b2f34f6614b4d/invoke.js"></script>
-            <div id="container-22a87df3c434936f876b2f34f6614b4d-3"></div>
-            <script async="async" data-cfasync="false" src="//pl28139319.effectivegatecpm.com/22a87df3c434936f876b2f34f6614b4d/invoke.js"></script>
-            <div id="container-22a87df3c434936f876b2f34f6614b4d-4"></div>
-          </div>
-          <!-- الشريحة 2: 4 إعلانات أخرى -->
-          <div class="ad_slide">
-            <script async="async" data-cfasync="false" src="//pl28139319.effectivegatecpm.com/22a87df3c434936f876b2f34f6614b4d/invoke.js"></script>
-            <div id="container-22a87df3c434936f876b2f34f6614b4d-5"></div>
-            <script async="async" data-cfasync="false" src="//pl28139319.effectivegatecpm.com/22a87df3c434936f876b2f34f6614b4d/invoke.js"></script>
-            <div id="container-22a87df3c434936f876b2f34f6614b4d-6"></div>
-            <script async="async" data-cfasync="false" src="//pl28139319.effectivegatecpm.com/22a87df3c434936f876b2f34f6614b4d/invoke.js"></script>
-            <div id="container-22a87df3c434936f876b2f34f6614b4d-7"></div>
-            <script async="async" data-cfasync="false" src="//pl28139319.effectivegatecpm.com/22a87df3c434936f876b2f34f6614b4d/invoke.js"></script>
-            <div id="container-22a87df3c434936f876b2f34f6614b4d-8"></div>
-          </div>
-          <p id="ad-slider-indicator" style="margin-top: 0.75rem; font-size: 0.9rem; opacity: 0.8;">
-            Ads group 1 / 2
-          </p>
+        <!-- إعلان واحد أعلى عنوان المميزات (السكربت نفسه هو الذي يدير شكل الإعلانات) -->
+        <div class="page_bottom_ad" style="max-width: 100%; margin: 0 auto 30px; text-align: center;">
+          <script async="async" data-cfasync="false" src="//pl28139319.effectivegatecpm.com/22a87df3c434936f876b2f34f6614b4d/invoke.js"></script>
+          <div id="container-22a87df3c434936f876b2f34f6614b4d"></div>
         </div>
 
         <a class="headline">Why Blockvia HOST?</a>
@@ -451,39 +428,6 @@
           lightbox.classList.add('active');
         });
       });
-
-      // Ad slider: تبديل بين مجموعات من 4 إعلانات كل 30 ثانية (30000ms)
-      (function () {
-        const slider = document.getElementById('ad-slider');
-        if (!slider) return;
-        const slides = slider.querySelectorAll('.ad_slide');
-        if (!slides.length) return;
-
-        let currentIndex = 0;
-        const indicator = document.getElementById('ad-slider-indicator');
-
-        function showSlide(index) {
-          slides.forEach((slide, i) => {
-            if (i === index) {
-              slide.classList.add('ad_slide_active');
-            } else {
-              slide.classList.remove('ad_slide_active');
-            }
-          });
-
-          if (indicator) {
-            indicator.textContent = 'Ads group ' + (index + 1) + ' / ' + slides.length;
-          }
-        }
-
-        // ابدأ بأول مجموعة
-        showSlide(0);
-
-        setInterval(function () {
-          currentIndex = (currentIndex + 1) % slides.length;
-          showSlide(currentIndex);
-        }, 30000); // 30000ms = 30 ثانية
-      })();
 
       lightbox.addEventListener('click', () => {
         lightbox.classList.remove('active');

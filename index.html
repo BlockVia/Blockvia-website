@@ -5,8 +5,6 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Blockvia HOST – Minecraft Server Launcher</title>
-   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6808151252075621"
-     crossorigin="anonymous"></script>
     <meta
       name="description"
       content="Blockvia HOST is a modern Minecraft Java & Bedrock server launcher for Windows with one‑click install, console, world, player and file management."
@@ -310,28 +308,6 @@
             will be bug‑free. Always keep backups of your important worlds and configuration files.
           </p>
 
-          <h3>Privacy &amp; cookies (AdSense)</h3>
-          <p>
-            This site uses Google AdSense to show ads. Third‑party vendors, including Google, use cookies and similar
-            technologies to serve ads based on your visits to this and other websites.
-          </p>
-          <p>
-            Google may use advertising cookies to enable it and its partners to serve ads to you based on your visit to
-            this site and/or other sites on the Internet. You can opt out of personalized advertising by visiting
-            Google Ads Settings or by visiting industry opt‑out pages where available in your region.
-          </p>
-          <p>
-            We do not sell, trade, or rent your personally identifiable information. We do not combine personally
-            identifiable information with non‑personally identifiable information collected through Google advertising
-            products without your prior consent.
-          </p>
-          <p>
-            For more information about how Google uses data, please see
-            <a href="https://policies.google.com/technologies/partner-sites" target="_blank" rel="noopener noreferrer"
-              >How Google uses data when you use our partners' sites or apps</a
-            >.
-          </p>
-
           <h3>Trademarks</h3>
           <p>
             "Minecraft" is a trademark of Mojang AB and/or Microsoft. Blockvia HOST is an independent project and is
@@ -348,55 +324,6 @@
         <a href="#legal-notice" class="footer_privacy_link" onclick="bvOpenLegalNotice(event)">Privacy &amp; Terms</a>
       </span>
     </footer>
-
-    <!-- Simple cookie consent banner (for AdSense / privacy compliance) -->
-    <div class="cookie_banner" id="cookie-consent-banner">
-      <div class="cookie_banner_inner">
-        <p class="cookie_banner_text">
-          This site uses cookies from Google AdSense and other partners to deliver and measure ads. By using this site,
-          you agree to our use of cookies.
-        </p>
-        <div class="cookie_banner_actions">
-          <button
-            type="button"
-            class="cookie_banner_button"
-            id="cookie-consent-more"
-            onclick="bvToggleCookieDetails()"
-          >
-            Privacy &amp; Terms
-          </button>
-          <button
-            type="button"
-            class="cookie_banner_button"
-            id="cookie-consent-accept"
-            onclick="bvCookieAccept()"
-          >
-            OK
-          </button>
-        </div>
-        <div class="cookie_banner_details" id="cookie-consent-details">
-          <h4>Privacy &amp; Terms (summary)</h4>
-          <ul>
-            <li>
-              Ads are provided by Google AdSense and partners using cookies or similar technologies to deliver and measure
-              ads.
-            </li>
-            <li>
-              We do not sell or rent your personally identifiable information and we do not combine it with ad data
-              without your consent.
-            </li>
-            <li>
-              You can manage ad personalisation in Google Ads Settings and learn more in the full legal notice at the
-              bottom of this page.
-            </li>
-          </ul>
-          <p>
-            For the complete legal notice, privacy &amp; terms text, scroll down to the
-            <strong>Legal notice, privacy &amp; terms</strong> section in the footer.
-          </p>
-        </div>
-      </div>
-    </div>
 
     <!-- Lightbox for feature images -->
     <div class="img_lightbox_backdrop" id="feature-lightbox">
@@ -453,85 +380,6 @@
         legal.scrollIntoView({ behavior: 'smooth' });
       }
 
-      // Toggle details in cookie banner (called from inline onclick)
-      function bvToggleCookieDetails() {
-        var details = document.getElementById('cookie-consent-details');
-        var moreBtn = document.getElementById('cookie-consent-more');
-        if (!details || !moreBtn) return;
-        var visible = details.style.display === 'block';
-        if (visible) {
-          details.style.display = 'none';
-          moreBtn.textContent = 'Privacy & Terms';
-        } else {
-          details.style.display = 'block';
-          moreBtn.textContent = 'Hide details';
-        }
-      }
-
-      // Helpers for simple consent cookie
-      function bvSetCookie(name, value, days) {
-        var expires = '';
-        if (days) {
-          var date = new Date();
-          date.setTime(date.getTime() + days * 24 * 60 * 60 * 1000);
-          expires = '; expires=' + date.toUTCString();
-        }
-        document.cookie = name + '=' + encodeURIComponent(value) + expires + '; path=/';
-      }
-
-      function bvGetCookie(name) {
-        var nameEQ = name + '=';
-        var ca = document.cookie.split(';');
-        for (var i = 0; i < ca.length; i++) {
-          var c = ca[i];
-          while (c.charAt(0) === ' ') c = c.substring(1, c.length);
-          if (c.indexOf(nameEQ) === 0) return decodeURIComponent(c.substring(nameEQ.length, c.length));
-        }
-        return null;
-      }
-
-      // Accept cookies (called from OK button)
-      function bvCookieAccept() {
-        var banner = document.getElementById('cookie-consent-banner');
-        if (banner) {
-          banner.style.display = 'none';
-        }
-        // احفظ القبول في كوكي المتصفح + localStorage كنسخة احتياطية
-        try {
-          bvSetCookie('bv_cookie_consent', '1', 365);
-        } catch (e) {}
-        try {
-          if (window.localStorage) {
-            localStorage.setItem('bv_cookie_consent_v1', 'accepted');
-          }
-        } catch (e) {
-          // ignore
-        }
-      }
-
-      // Basic cookie consent banner (for AdSense privacy/compliance)
-      (function () {
-        const storageKey = 'bv_cookie_consent_v1';
-        const banner = document.getElementById('cookie-consent-banner');
-        if (!banner) return;
-
-        try {
-          // إذا كان هناك كوكي قبول، لا نظهر النافذة
-          if (bvGetCookie('bv_cookie_consent') === '1') {
-            return;
-          }
-
-          // دعم خلفي للإصدارات القديمة التي استخدمت localStorage فقط
-          if (window.localStorage && localStorage.getItem(storageKey) === 'accepted') {
-            bvSetCookie('bv_cookie_consent', '1', 365);
-            return;
-          }
-        } catch (e) {
-          // في حالة تعطل الكوكي أو localStorage، نسمح بعرض النافذة
-        }
-
-        banner.style.display = 'flex';
-      })();
     </script>
 
     <!-- Vignette ad script -->
